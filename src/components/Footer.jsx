@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-5 py-8 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-muted">
         <p>🎬 MovieExplorer</p>
         <p>© 2026 MovieExplorer. All rights reserved.</p>
-        
+        <a
           href="https://github.com"
           target="_blank"
           rel="noreferrer"
