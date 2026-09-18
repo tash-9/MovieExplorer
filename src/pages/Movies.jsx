@@ -31,7 +31,6 @@ const Movies = () => {
       }
     };
 
-    // Debounce so we don't fire a request on every keystroke.
     const timeout = setTimeout(fetchMovies, 400);
     return () => {
       isCancelled = true;
@@ -42,30 +41,30 @@ const Movies = () => {
   return (
     <div className="max-w-6xl mx-auto px-5 py-10">
       <div className="max-w-xl mx-auto mb-10">
-        <div className="flex items-center gap-3 bg-gray-900 border border-gray-800 rounded-2xl px-4 py-3 shadow-2xl focus-within:border-blue-600 transition-colors">
-          <Search size={20} className="text-gray-500 shrink-0" />
+        <div className="flex items-center gap-3 bg-surface border border-border rounded-2xl px-4 py-3 shadow-2xl focus-within:border-accent transition-colors">
+          <Search size={20} className="text-muted shrink-0" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search for a movie..."
-            className="w-full bg-transparent outline-none text-gray-100 placeholder:text-gray-500"
+            className="w-full bg-transparent outline-none text-white placeholder:text-muted"
           />
         </div>
       </div>
 
       {loading && (
-        <div className="flex justify-center items-center gap-2 py-20 text-gray-400">
-          <Loader2 className="animate-spin" size={20} /> Loading movies...
+        <div className="flex justify-center items-center gap-2 py-20 text-muted">
+          <Loader2 className="animate-spin text-accent" size={20} /> Loading movies...
         </div>
       )}
 
       {!loading && error && (
-        <p className="text-center text-red-400 py-20">{error}</p>
+        <p className="text-center text-accent py-20">{error}</p>
       )}
 
       {!loading && !error && movies.length === 0 && (
-        <p className="text-center text-gray-500 py-20">
+        <p className="text-center text-muted py-20">
           No movies found. Try a different search.
         </p>
       )}

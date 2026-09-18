@@ -2,7 +2,6 @@ import { Calendar, Star, X } from "lucide-react";
 import { useEffect } from "react";
 
 const MovieModal = ({ movie, onClose }) => {
-  // Allow closing the modal with the Escape key.
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
@@ -13,7 +12,6 @@ const MovieModal = ({ movie, onClose }) => {
 
   if (!movie) return null;
 
-  // Close when the user clicks the dark backdrop, not the modal itself.
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) onClose();
   };
@@ -21,11 +19,11 @@ const MovieModal = ({ movie, onClose }) => {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/70 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
     >
-      <div className="bg-gray-900 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+      <div className="bg-surface border border-border w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
         <div className="relative">
-          <div className="h-56 sm:h-72 bg-gray-800">
+          <div className="h-56 sm:h-72 bg-background">
             {movie.backdrop ? (
               <img
                 src={movie.backdrop}
@@ -33,25 +31,32 @@ const MovieModal = ({ movie, onClose }) => {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-gray-500">
+              <div className="w-full h-full flex items-center justify-center text-muted">
                 No Image Available
               </div>
             )}
           </div>
+          {/* Hero overlay: black -> transparent */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: "linear-gradient(to top, rgba(0,0,0,0.9), transparent)",
+            }}
+          />
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute top-3 right-3 bg-gray-950/70 hover:bg-gray-950 cursor-pointer rounded-full p-2 text-gray-100 transition-colors"
+            className="absolute top-3 right-3 bg-black/70 hover:bg-accent cursor-pointer rounded-full p-2 text-white transition-colors"
           >
             <X size={20} />
           </button>
         </div>
 
         <div className="p-6 space-y-4">
-          <h2 className="text-2xl font-bold text-gray-100">{movie.title}</h2>
+          <h2 className="text-2xl font-bold text-white">{movie.title}</h2>
 
-          <div className="flex flex-wrap items-center gap-5 text-sm text-gray-300">
+          <div className="flex flex-wrap items-center gap-5 text-sm text-muted">
             <span className="flex items-center gap-1">
               <Star size={16} className="text-yellow-400 fill-yellow-400" />
               Rating: {movie.rating ?? "N/A"}
@@ -61,7 +66,7 @@ const MovieModal = ({ movie, onClose }) => {
               Release: {movie.releaseDate}
             </span>
             {movie.runtime && <span>Runtime: {movie.runtime} min</span>}
-            <span className="px-2 py-0.5 rounded-full border border-gray-700 text-xs text-gray-400">
+            <span className="px-2 py-0.5 rounded-full border border-border text-xs text-muted">
               {movie.status}
             </span>
           </div>
@@ -71,7 +76,7 @@ const MovieModal = ({ movie, onClose }) => {
               {movie.genres.map((genre) => (
                 <span
                   key={genre}
-                  className="text-xs bg-blue-600/20 text-blue-300 px-3 py-1 rounded-full"
+                  className="text-xs bg-accent/15 text-accent px-3 py-1 rounded-full"
                 >
                   {genre}
                 </span>
@@ -80,17 +85,17 @@ const MovieModal = ({ movie, onClose }) => {
           )}
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 mb-1">Overview</h3>
-            <p className="text-gray-300 leading-relaxed">{movie.summary}</p>
+            <h3 className="text-sm font-semibold text-muted mb-1">Overview</h3>
+            <p className="text-white/80 leading-relaxed">{movie.summary}</p>
           </div>
 
-          <p className="text-sm text-gray-500">Network: {movie.network}</p>
+          <p className="text-sm text-muted">Network: {movie.network}</p>
 
           <div className="flex justify-end pt-2">
             <button
               type="button"
               onClick={onClose}
-              className="text-sm font-medium bg-gray-800 hover:bg-gray-700 cursor-pointer transition-colors px-5 py-2 rounded-full text-gray-100"
+              className="text-sm font-medium bg-background border border-border hover:border-accent hover:text-accent cursor-pointer transition-colors px-5 py-2 rounded-full text-white"
             >
               ❌ Close
             </button>
