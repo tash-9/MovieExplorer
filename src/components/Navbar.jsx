@@ -1,4 +1,4 @@
-import { Clapperboard } from "lucide-react";
+import { Clapperboard, Search } from "lucide-react";
 import { Link } from "react-router";
 
 const Navbar = () => {
@@ -12,9 +12,10 @@ const Navbar = () => {
         <nav>
           <Link
             to="/movies"
-            className="text-sm font-medium bg-accent hover:bg-accent/90 hover:scale-105 transition-all px-5 py-2 rounded-full text-white"
+            aria-label="Search movies"
+            className="flex items-center justify-center h-10 w-10 rounded-full border border-border text-white hover:border-accent hover:text-accent hover:scale-105 transition-all"
           >
-            Movies
+            <Search size={18} />
           </Link>
         </nav>
       </div>
