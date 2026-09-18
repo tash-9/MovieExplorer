@@ -24,7 +24,6 @@ movie-explorer/
 ├── public/
 │   └── favicon.svg
 ├── src/
-│   ├── assets/
 │   ├── components/
 │   │   ├── Footer.jsx
 │   │   ├── MovieCard.jsx
@@ -75,6 +74,3 @@ This is a standard Vite + React app, so it deploys directly to [Vercel](https://
 - Build command: `npm run build`
 - Output directory: `dist`
 
-## 📄 License
-
-Built for educational purposes as part of a front-end assignment.
