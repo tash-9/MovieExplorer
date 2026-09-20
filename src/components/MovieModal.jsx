@@ -3,6 +3,14 @@ import { useEffect } from "react";
 
 const MovieModal = ({ movie, onClose }) => {
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+  
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
     };

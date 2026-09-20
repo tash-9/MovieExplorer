@@ -77,31 +77,40 @@ const Home = () => {
               Explore and discover your favorite movies and TV shows from around
               the world.
             </p>
+            <a
+            
+              href="#movies"
+              className="text-lg font-medium hover:scale-105 transition-all bg-accent hover:bg-accent/90 px-8 py-3 rounded-full text-white"
+            >
+              Explore Now
+            </a>
           </div>
         </div>
       </div>
 
       {/* How it works */}
-      <div className="max-w-6xl mx-auto px-5 pb-14">
-        <h2 className="text-2xl font-bold text-white text-center mb-8">How it works</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {steps.map(({ icon: Icon, title, description }) => (
-            <div
-              key={title}
-              className="bg-surface border border-border rounded-2xl p-6 flex flex-col items-center text-center gap-3"
-            >
-              <div className="h-12 w-12 rounded-full bg-accent/15 text-accent flex items-center justify-center">
-                <Icon size={22} />
+      <div className="bg-accent/5">
+        <div className="max-w-6xl mx-auto px-5 py-14">
+          <h2 className="text-2xl font-bold text-white text-center mb-8">How it works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {steps.map(({ icon: Icon, title, description }) => (
+              <div
+                key={title}
+                className="bg-surface border border-border rounded-2xl p-6 flex flex-col items-center text-center gap-3"
+              >
+                <div className="h-12 w-12 rounded-full bg-accent/15 text-accent flex items-center justify-center">
+                  <Icon size={22} />
+                </div>
+                <h3 className="text-white font-semibold">{title}</h3>
+                <p className="text-muted text-sm">{description}</p>
               </div>
-              <h3 className="text-white font-semibold">{title}</h3>
-              <p className="text-muted text-sm">{description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Movie grid */}
-      <div className="max-w-6xl mx-auto px-5 pb-16">
+      <div id="movies" className="max-w-6xl mx-auto px-5 py-16 scroll-mt-20">
         {loading && (
           <div className="flex justify-center items-center gap-2 py-20 text-muted">
             <Loader2 className="animate-spin text-accent" size={20} /> Loading movies...
