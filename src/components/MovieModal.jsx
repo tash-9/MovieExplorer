@@ -91,15 +91,7 @@ const MovieModal = ({ movie, onClose }) => {
 
           <p className="text-sm text-muted">Network: {movie.network}</p>
 
-          <div className="flex justify-end pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="text-sm font-medium bg-background border border-border hover:border-accent hover:text-accent cursor-pointer transition-colors px-5 py-2 rounded-full text-white"
-            >
-              ❌ Close
-            </button>
-          </div>
+          <div className="flex justify-end pt-2"></div>
         </div>
       </div>
     </div>
